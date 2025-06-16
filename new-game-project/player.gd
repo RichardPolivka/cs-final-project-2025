@@ -1,24 +1,21 @@
 extends CharacterBody2D
 
+# Movement parameters
 @export var speed: float = 200.0
-
-func _physics_process(delta: float) -> void:
-	var direction = Vector2.ZERO
-	var velocity: Vector2 = Vector2.ZERO
+@export var jump_velocity: float = -400.0
+@export var gravity: float = 1200.0
 
 
-	if Input.is_action_pressed("RIGHT"):
-		direction.x += 1
-	if Input.is_action_pressed("LEFT"):
-		direction.x -= 1
-	if Input.is_action_pressed("DOWN"):
-		direction.y += 1
-	if Input.is_action_pressed("UP"):
-		direction.y -= 1
+func _physics_process(delta):
+	# Apply gravity
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
 
-	# Normalize direction to avoid faster diagonal movement
-	if direction != Vector2.ZERO:
-		direction = direction.normalized()
+	# Get left/right input
+	var input_direction = Input.get_action_strength("RIGHT") - Input.get_action_strength("LEFT")
+	velocity.x = input_direction * speed
 
-	velocity = direction * speed
-	move_and_slide()
+	# Move and slide using the CharacterBody2D built-in method
+	velocity = move_and_slide()

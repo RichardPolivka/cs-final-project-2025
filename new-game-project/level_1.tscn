@@ -1,23 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://2gea0ojub4pl"]
+[gd_scene load_steps=6 format=3 uid="uid://2gea0ojub4pl"]
 
 [ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://cj0mypsw42kya" path="res://player.tscn" id="2_hbghi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hbghi"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbghi"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbghi"]
-size = Vector2(2.16142, 3.87175)
+size = Vector2(0.977958, 1.33403)
 
 [node name="level1" type="Node2D"]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(181, 141)
-scale = Vector2(904.5, 288.5)
+position = Vector2(15.125, 47.625)
+scale = Vector2(1236.25, 475.25)
 mesh = SubResource("BoxMesh_hbghi")
 texture = ExtResource("1_3hls8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D"]
-position = Vector2(-0.0525151, -0.268631)
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+position = Vector2(0.147597, -0.611785)
+scale = Vector2(1, 1)
+physics_material_override = SubResource("PhysicsMaterial_hbghi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
+position = Vector2(-0.126262, 0.602053)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hbghi")
 

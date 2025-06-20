@@ -1,24 +1,38 @@
 extends CharacterBody2D
 
 @export var speed: float = 200.0
+@export var jump_velocity: float = -400.0
+@export var gravity: float = 900.0
 
-func _physics_process(delta: float) -> void:
-	var direction = Vector2.ZERO
-	var velocity: Vector2 = Vector2.ZERO
+var current_color: String = "red"
 
+@onready var sprite: Sprite2D = $Sprite2D
 
-	if Input.is_action_pressed("RIGHT"):
-		direction.x += 1
-	if Input.is_action_pressed("LEFT"):
-		direction.x -= 1
-	if Input.is_action_pressed("DOWN"):
-		direction.y += 1
-	if Input.is_action_pressed("UP"):
-		direction.y -= 1
+func _physics_process(delta):
+	# Gravity
+	if not is_on_floor():
+		velocity.y += gravity * delta
 
-	# Normalize direction to avoid faster diagonal movement
-	if direction != Vector2.ZERO:
-		direction = direction.normalized()
+	# Input
+	var input_direction = Input.get_action_strength("RIGHT") - Input.get_action_strength("LEFT")
+	velocity.x = input_direction * speed
 
-	velocity = direction * speed
-	move_and_slide()
+	if Input.is_action_just_pressed("UP") and is_on_floor():
+		velocity.y = jump_velocity
+
+	# Movement
+		move_and_slide()
+
+func set_color(new_color: String):
+	current_color = new_color
+
+	# Change the sprite's modulate color
+	match new_color:
+		"red":
+			sprite.modulate = Color(1, 0, 0)
+		"blue":
+			sprite.modulate = Color(0, 0.5, 1)
+		"green":
+			sprite.modulate = Color(0, 1, 0)
+		"yellow":
+			sprite.modulate = Color(1, 1, 0)

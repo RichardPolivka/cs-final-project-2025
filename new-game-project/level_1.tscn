@@ -40,7 +40,7 @@ scale = Vector2(20, 20)
 
 [node name="colourchangingwall" parent="." instance=ExtResource("4_ihfcg")]
 self_modulate = Color(0, 1, 0, 1)
-position = Vector2(399, -295)
+position = Vector2(307, -295)
 
 [node name="colourchangingwall2" parent="colourchangingwall" instance=ExtResource("4_ihfcg")]
 modulate = Color(0.796078, 0.223529, 0.313726, 1)

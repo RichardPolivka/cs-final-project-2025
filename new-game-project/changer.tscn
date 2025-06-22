@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjnca88208d68"]
+[gd_scene load_steps=5 format=3 uid="uid://bjnca88208d68"]
 
-[ext_resource type="Script" uid="uid://bufhh22kk50rc" path="res://changer.gd" id="1_nfpyi"]
+[ext_resource type="Script" uid="uid://cw57l3u4jgpm6" path="res://area_2d.gd" id="1_eyyna"]
+[ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="2_eyyna"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhpma"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_fjal4"]
+radius = 10.401
+height = 14.44
+
 [node name="changer" type="Node2D"]
-script = ExtResource("1_nfpyi")
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_eyyna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_qhpma")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]
+position = Vector2(0, -1)
+mesh = SubResource("SphereMesh_fjal4")
+texture = ExtResource("2_eyyna")

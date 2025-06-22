@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://d25t86klhl3bu"]
+
+[ext_resource type="Script" uid="uid://do63m2d6hxytt" path="res://colourwall.gd" id="1_43p75"]
+[ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="2_fki7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47b8j"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k5wnd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ho6l"]
+
+[node name="colourchangingwall" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("1_43p75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_47b8j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 1, 1)
+self_modulate = Color(0, 1, 1, 1)
+material = SubResource("CanvasItemMaterial_k5wnd")
+position = Vector2(-4.76837e-07, -3.57628e-07)
+scale = Vector2(18, 18)
+mesh = SubResource("BoxMesh_2ho6l")
+texture = ExtResource("2_fki7g")

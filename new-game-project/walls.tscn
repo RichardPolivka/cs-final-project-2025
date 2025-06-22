@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://be8m1twb23mls"]
+[gd_scene load_steps=5 format=3 uid="uid://be8m1twb23mls"]
 
 [ext_resource type="Script" uid="uid://ck1atsab5dvif" path="res://static_body_2d.gd" id="1_xxkwp"]
+[ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="2_jt0p1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftpcs"]
+size = Vector2(25.3682, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_07yvr"]
 
 [node name="walls" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-470.584, 0.75)
+scale = Vector2(6.00624, -0.5)
 script = ExtResource("1_xxkwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(88.2029, -204.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ftpcs")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(55, 104.469)
+scale = Vector2(143, 2.9375)
+mesh = SubResource("BoxMesh_07yvr")
+texture = ExtResource("2_jt0p1")

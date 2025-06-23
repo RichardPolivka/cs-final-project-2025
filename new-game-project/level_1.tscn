@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2gea0ojub4pl"]
+[gd_scene load_steps=9 format=3 uid="uid://2gea0ojub4pl"]
 
 [ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://cj0mypsw42kya" path="res://player.tscn" id="2_hbghi"]
@@ -6,19 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://d25t86klhl3bu" path="res://colourchangingwall.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://bjnca88208d68" path="res://changer.tscn" id="5_rka8t"]
 [ext_resource type="PackedScene" uid="uid://dulfnnvksfjim" path="res://end.tscn" id="6_5hph3"]
+[ext_resource type="PackedScene" uid="uid://b88b5tg35lqri" path="res://changerback.tscn" id="7_j7kpp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hbghi"]
 
 [node name="level1" type="Node2D"]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(-235.875, 169.75)
+position = Vector2(-181, 104)
 scale = Vector2(1965.75, 1421.5)
 mesh = SubResource("BoxMesh_hbghi")
 texture = ExtResource("1_3hls8")
 
 [node name="player" parent="." instance=ExtResource("2_hbghi")]
-position = Vector2(-261, -51)
+position = Vector2(-197, -81)
 
 [node name="walls" parent="." instance=ExtResource("2_hn12h")]
 position = Vector2(939, 2749)
@@ -45,10 +46,48 @@ position = Vector2(307, -295)
 
 [node name="colourchangingwall2" parent="colourchangingwall" instance=ExtResource("4_ihfcg")]
 modulate = Color(0.796078, 0.223529, 0.313726, 1)
-position = Vector2(-1048, -1)
+position = Vector2(-1108, 2)
 
 [node name="changer" parent="." instance=ExtResource("5_rka8t")]
-position = Vector2(-268, 150)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-451, -295)
+
+[node name="changerback" parent="." instance=ExtResource("7_j7kpp")]
+position = Vector2(41, -292)
 
 [node name="end" parent="." instance=ExtResource("6_5hph3")]
 position = Vector2(-252, 493)
+
+[node name="lineup" type="Node2D" parent="."]
+
+[node name="changer" parent="lineup" instance=ExtResource("5_rka8t")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-552, 213)
+
+[node name="changer2" parent="lineup/changer" instance=ExtResource("5_rka8t")]
+position = Vector2(-274, -1)
+
+[node name="changer2" parent="lineup/changer/changer2" instance=ExtResource("5_rka8t")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(803, 6)
+
+[node name="changer2" parent="lineup/changer/changer2/changer2" instance=ExtResource("5_rka8t")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-363, 1)
+
+[node name="changer3" parent="lineup/changer/changer2/changer2" instance=ExtResource("5_rka8t")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(597, 2)
+
+[node name="changer2" parent="lineup/changer/changer2/changer2/changer3" instance=ExtResource("5_rka8t")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-216, -1)
+
+[node name="changerback" parent="lineup/changer/changer2/changer2/changer3/changer2" instance=ExtResource("7_j7kpp")]
+position = Vector2(-195, -1)
+
+[node name="changerback2" parent="lineup/changer/changer2/changer2/changer3/changer2/changerback" instance=ExtResource("7_j7kpp")]
+position = Vector2(-377, 6)
+
+[node name="changerback2" parent="lineup/changer/changer2/changer2/changer3/changer2/changerback/changerback2" instance=ExtResource("7_j7kpp")]
+position = Vector2(-479, -13)

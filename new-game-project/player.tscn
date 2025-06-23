@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj0mypsw42kya"]
+[gd_scene load_steps=5 format=3 uid="uid://cj0mypsw42kya"]
 
 [ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://4r8im70rrnvb" path="res://player.gd" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(135, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(134, 133)
 
 [node name="player" type="Node2D"]
 
@@ -21,4 +24,11 @@ shape = SubResource("RectangleShape2D_i3pqv")
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(0.8, 0.8)
 
+[node name="Area2D" type="Area2D" parent="player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D"]
+position = Vector2(-2, -1.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
 [connection signal="texture_changed" from="player/Sprite2D" to="player" method="_on_sprite_2d_texture_changed"]
+[connection signal="area_entered" from="player/Area2D" to="player" method="_on_area_2d_area_entered"]

@@ -3,11 +3,24 @@ extends CharacterBody2D
 @export var speed = 600
 @onready var sprite = $Sprite2D # Assuming the sprite is a child of the CharacterBody2D
 
+
 func _on_area_2d_area_entered(area):
-	if area.name == "changer": # Replace "Area2DName" with the actual name of your Area2D
-		# Load a new texture (replace "new_sprite.png" with your desired texture)
+	print("Entered area:", area.name)
+	if area.name == "changer":
 		var new_texture = load("res://download.png")
-		sprite.texture = new_texture
+		if sprite and new_texture:
+			sprite.texture = new_texture
+		else:
+			print("Sprite or texture missing")
+	print("Entered area:", area.name)
+	if area.name == "changerback":
+		var new_texture = load("res://icon.svg")
+		if sprite and new_texture:
+			sprite.texture = new_texture
+		else:
+			print("Sprite or texture missing")
+
+
 
 
 func get_input():

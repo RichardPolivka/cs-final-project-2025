@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b88b5tg35lqri"]
+
+[ext_resource type="Script" uid="uid://btyvdegm0eeca" path="res://changerback.gd" id="1_suxvl"]
+[ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="2_06ln6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_op6sh"]
+size = Vector2(108, 97)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tq1rg"]
+radius = 10.401
+height = 14.44
+
+[node name="changerback" type="Node2D"]
+
+[node name="changerback" type="Area2D" parent="."]
+script = ExtResource("1_suxvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changerback"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_op6sh")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="changerback"]
+position = Vector2(0, -1)
+mesh = SubResource("SphereMesh_tq1rg")
+texture = ExtResource("2_06ln6")
+
+[connection signal="body_entered" from="changerback" to="changerback" method="_on_body_entered"]

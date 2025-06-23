@@ -12,16 +12,16 @@ height = 14.44
 
 [node name="changer" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="changer" type="Area2D" parent="."]
 script = ExtResource("1_eyyna")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changer"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_qhpma")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="changer"]
 position = Vector2(0, -1)
 mesh = SubResource("SphereMesh_fjal4")
 texture = ExtResource("2_eyyna")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="changer" to="changer" method="_on_body_entered"]

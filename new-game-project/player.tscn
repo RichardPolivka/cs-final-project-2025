@@ -8,15 +8,17 @@ size = Vector2(135, 132)
 
 [node name="player" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D" parent="."]
 script = ExtResource("2_onrkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="player"]
 texture = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(-1.5, -2)
 shape = SubResource("RectangleShape2D_i3pqv")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(0.8, 0.8)
+
+[connection signal="texture_changed" from="player/Sprite2D" to="player" method="_on_sprite_2d_texture_changed"]

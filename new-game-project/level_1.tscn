@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://2gea0ojub4pl"]
+[gd_scene load_steps=8 format=3 uid="uid://2gea0ojub4pl"]
 
 [ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://cj0mypsw42kya" path="res://player.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://be8m1twb23mls" path="res://walls.tscn" id="2_hn12h"]
 [ext_resource type="PackedScene" uid="uid://d25t86klhl3bu" path="res://colourchangingwall.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://bjnca88208d68" path="res://changer.tscn" id="5_rka8t"]
+[ext_resource type="PackedScene" uid="uid://dulfnnvksfjim" path="res://end.tscn" id="6_5hph3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hbghi"]
 
@@ -47,4 +48,7 @@ modulate = Color(0.796078, 0.223529, 0.313726, 1)
 position = Vector2(-1048, -1)
 
 [node name="changer" parent="." instance=ExtResource("5_rka8t")]
-position = Vector2(-197, 224)
+position = Vector2(-268, 150)
+
+[node name="end" parent="." instance=ExtResource("6_5hph3")]
+position = Vector2(-252, 493)

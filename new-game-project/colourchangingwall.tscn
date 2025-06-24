@@ -1,27 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://d25t86klhl3bu"]
+[gd_scene load_steps=6 format=3 uid="uid://d25t86klhl3bu"]
 
 [ext_resource type="Script" uid="uid://do63m2d6hxytt" path="res://colourwall.gd" id="1_43p75"]
+[ext_resource type="Texture2D" uid="uid://cgjyj7dlpeofk" path="res://download.png" id="2_47b8j"]
 [ext_resource type="Texture2D" uid="uid://b2wjw3qa15h2u" path="res://icon.svg" id="2_fki7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47b8j"]
 size = Vector2(173, 166)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_43p75"]
-radius = 79.0
+radius = 92.0489
 
 [node name="colourchangingwall" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+disable_mode = 2
 script = ExtResource("1_43p75")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("2_fki7g")
+required_texture = ExtResource("2_47b8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_47b8j")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_fki7g")
+
 [node name="Area2D" type="Area2D" parent="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
 shape = SubResource("CircleShape2D_43p75")
+
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_exited"]

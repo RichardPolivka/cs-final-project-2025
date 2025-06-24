@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var speed = 600
 @onready var sprite = $Sprite2D # Assuming the sprite is a child of the CharacterBody2D
 
-
 func _on_area_2d_area_entered(area):
 	print("Entered area:", area.name)
 	if area.name == "changer":
